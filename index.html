@@ -1,14 +1,25 @@
 <head>
   <!-- ... -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <!-- ... other scripts -->
-  <script>
-    const WebApp = window.Telegram.WebApp;
-    console.log(WebApp.version);
-    //WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
-    WebApp.showAlert(`Добро пожаловать`);
-  </script>
 </head>
 <body>
+  <div id="app">
   <h2>Привет!</h2>
+  <div id="info"></div>
+    
+  </div>
+  <script>
+    const webApp = window.Telegram.WebApp;
+    console.log(webApp.initData);
+    console.log(webApp.version);
+    //WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+    webApp.showAlert(`Добро пожаловать`);
+    webApp.enableClosingConfirmation()
+
+    const elem = getElementById('info');
+    elem.innerHtml = webApp.initData;
+  </script>
+  
 </body>
